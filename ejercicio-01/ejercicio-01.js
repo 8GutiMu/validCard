@@ -13,7 +13,19 @@ function isValidCard(creditCardNumber) {
     }
 
     var tarjetita = creditCardNumber.toString();
-    
+
+
+    var stringTarjeta = creditCardNumber.toString();
+
+    console.log(tarjeta,stringTarjeta);
+
+    var numeros =stringTarjeta.split("");
+    var par = numeros.filter(function (numero) {
+        var posicion =(numeros.indexOf(numero));
+        if (posicion%2 == 0){
+          return parseInt(numero);
+        };
+      });
 
 
 
