@@ -11,6 +11,7 @@ function isValidCard(creditCardNumber) {
     }
 
     var resultado = validacion(creditCardNumber);
+    return resultado;
 }
 
 function validacion(creditCardNumber){
@@ -19,11 +20,38 @@ function validacion(creditCardNumber){
 
   var numeros= stringTarjeta.split("");
   var par =[];
+  var impar =[]
 
-  
+  for (var i=0; i<16;i++){
+    if(i%2==0){
+        par.push(numeros[i]);
+    }else{
+        impar.push(numeros[i]);
+    }
+   }
 
+   var sumaPar =0;
+   var sumaImpar =0;
+
+   for(var i=0; i<6; i++){
+     var temporal = par[i]*2;
+     var unidades = Math.floor(temporal/10);
+     var decenas = temporal%10;
+     sumaPar+=(unidades+decenas);
+   }
+
+   for(var i=0; i<6; i++){
+     sumaImpar += impar[i];
+   }
+
+   if (sumaPar/sumaImpar%10 ==0){
+     return true;
+   }else{
+     return false;
+   }
 
 }
+
 function primerInento(creditCardNumber){
   var stringTarjeta = creditCardNumber.toString();
 
